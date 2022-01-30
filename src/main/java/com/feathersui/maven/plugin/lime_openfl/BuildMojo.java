@@ -152,6 +152,11 @@ public class BuildMojo extends AbstractMojo {
 			}
 			checkHaxelib(name, version);
 		}
+		if (additionalHaxelibs != null) {
+			for (String haxelib : additionalHaxelibs) {
+				checkHaxelib(haxelib, null);
+			}
+		}
 	}
 
 	private void checkHaxelib(String name, String requiredVersion) throws CommandLineException, MojoFailureException {
