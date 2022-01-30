@@ -1,0 +1,17 @@
+lib/
+target/
+.metadata/
+.idea/
+.settings/
+.vscode/settings.json
+.DS_Store
+Thumbs.db
+._*
+.project
+.classpath
+.factorypath
+*.local.properties
+*.stackdump
+*.p12
+*.lnk
+*.iml
