@@ -2,7 +2,14 @@
 
 A plugin to build [Lime](https://lime.software/) and [OpenFL](https://openfl.org/) projects with [Apache Maven](https://maven.apache.org/).
 
-Executes the `lime build` command using the standard Lime _project.xml_ file.
+Performs the following actions:
+
+- If necessary, installs any Haxelib libraries specified in _project.xml_
+- Executes the `lime build` command for the specified target
+
+## Installation
+
+Currently, the plugin must be built and installed manually. See below.
 
 ## Requirements
 
@@ -40,4 +47,12 @@ The following sample Maven _pom.xml_ demonstrates how to use the plugin.
     </plugins>
   </build>
 </project>
+```
+
+## Build the plugin from source
+
+Run the following command to build and install the plugin.
+
+```sh
+mvn clean install
 ```
