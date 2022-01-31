@@ -32,6 +32,12 @@ jobs:
           name: lime-openfl-maven-plugin-javadoc
           path: target/site/apidocs/
           if-no-files-found: error
+      - name: Upload Site
+        if: ${{ github.event_name != 'pull_request' && github.ref_name == 'master' }}
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: target/site
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.2.4
