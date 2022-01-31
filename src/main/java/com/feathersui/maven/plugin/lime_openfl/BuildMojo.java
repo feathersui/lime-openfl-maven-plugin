@@ -181,6 +181,7 @@ public class BuildMojo extends AbstractMojo {
 
 	private void checkHaxelibs() throws Exception {
 		getLog().debug("Checking libraries...");
+		boolean foundLime = false;
 		Document projectDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(projectFile);
 		NodeList haxelibElements = projectDocument.getDocumentElement().getElementsByTagName("haxelib");
 		for (int i = 0; i < haxelibElements.getLength(); i++) {
@@ -192,6 +193,9 @@ public class BuildMojo extends AbstractMojo {
 			if (name.length() == 0) {
 				continue;
 			}
+			if (!foundLime && name.equals("lime")) {
+				foundLime = true;
+			}
 			String version = null;
 			if (haxelibElement.hasAttribute("version")) {
 				version = haxelibElement.getAttribute("version");
@@ -200,8 +204,14 @@ public class BuildMojo extends AbstractMojo {
 		}
 		if (additionalHaxelibs != null) {
 			for (String haxelib : additionalHaxelibs) {
+				if (!foundLime && haxelib.equals("lime")) {
+					foundLime = true;
+				}
 				checkHaxelib(haxelib, null);
 			}
+		}
+		if (!foundLime) {
+			checkHaxelib("lime", null);
 		}
 	}
 
