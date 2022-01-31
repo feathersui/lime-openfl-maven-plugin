@@ -35,7 +35,7 @@ jobs:
       - name: "Build Sample: Lime"
         working-directory: lime-project
         run: mvn -B compile --file pom.xml
-      - name: "Build Sample: Lime (Unconfigured)""
+      - name: "Build Sample: Lime (Unconfigured)"
         working-directory: unconfigured-lime-project
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: OpenFL"
