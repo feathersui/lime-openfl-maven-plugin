@@ -36,14 +36,14 @@ jobs:
         with:
           haxe-version: 4.2.4
       - name: "Build Sample: Lime"
-        working-directory: lime-project
+        working-directory: samples/lime-project
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: Lime (Unconfigured)"
-        working-directory: unconfigured-lime-project
+        working-directory: samples/unconfigured-lime-project
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: OpenFL"
-        working-directory: openfl-project
+        working-directory: samples/openfl-project
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: Feathers UI"
-        working-directory: feathersui-project
+        working-directory: samples/feathersui-project
         run: mvn -B compile --file pom.xml
