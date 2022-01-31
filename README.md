@@ -107,7 +107,7 @@ To customize the generated _project.xml_ file, add a `<limeProject>` parameter i
       <haxelibs>
         <haxelib>openfl</haxelib>
         <haxelib>actuate</haxelib>
-      </haxelib>
+      </haxelibs>
       <icons>
         <icon>assets/myapp-icon.svg</icon>
       </icons>
