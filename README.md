@@ -4,9 +4,9 @@ A plugin to build [Lime](https://lime.software/), [OpenFL](https://openfl.org/),
 
 Performs the following actions:
 
-- Generates a [Lime _project.xml_ file](https://lime.software/docs/project-files/xml-format/)
-- If necessary, installs any Haxelib libraries specified in _project.xml_
-- Executes the `lime build` command for the specified target
+- Can use your existing [Lime _project.xml_ file](https://lime.software/docs/project-files/xml-format/), or it can generate one from parameters in your Maven _pom.xml_ file.
+- If necessary, installs any Haxelib libraries specified in _project.xml_.
+- Executes the `lime build` command for the specified target.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ The following sample Maven _pom.xml_ demonstrates how to build an existing proje
 
 ## Generate a Lime _project.xml_ file
 
-If you don't have a separate Lime _project.xml_ file, or if you prefer to manage only the Maven _pom.xml_ file, you can add the `generate-project-xml` goal too.
+If you don't have an existing Lime _project.xml_ file, or if you prefer to manage all build configuration in the Maven _pom.xml_ file, you can add the `generate-project-xml` goal too.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -87,7 +87,7 @@ If you don't have a separate Lime _project.xml_ file, or if you prefer to manage
 </project>
 ```
 
-To customize the generated _project.xml_ file, add a `<limeProject>` element in the `configuration` section for the plugin.
+To customize the generated _project.xml_ file, add a `<limeProject>` parameter in the `configuration` section for the plugin.
 
 ```xml
 <plugin>
