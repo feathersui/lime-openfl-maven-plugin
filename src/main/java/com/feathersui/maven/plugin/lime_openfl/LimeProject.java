@@ -332,11 +332,11 @@ public class LimeProject {
 	 * Represents the {@code <java>} element of the Lime <em>project.xml</em>
 	 * format.
 	 * 
-	 * @see JavaSource
+	 * @see Java
 	 * @see <a href="https://lime.software/docs/project-files/xml-format/#java">Lime
 	 *      <em>project.xml</em> format: &lt;java&gt;</a>
 	 */
-	public JavaSource[] java = null;
+	public Java[] java = null;
 
 	/**
 	 * Represents the {@code <launchImage>} element of the Lime <em>project.xml</em>

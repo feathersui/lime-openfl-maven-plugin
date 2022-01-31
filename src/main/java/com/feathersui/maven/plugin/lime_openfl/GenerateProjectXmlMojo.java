@@ -431,7 +431,7 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 			}
 		}
 		if (section != null && section.java != null) {
-			for (JavaSource javaFile : section.java) {
+			for (Java javaFile : section.java) {
 				builder.append("<java path=\"")
 						.append(javaFile.path.getAbsolutePath())
 						.append("\"/>\n");

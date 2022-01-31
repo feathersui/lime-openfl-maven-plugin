@@ -24,7 +24,7 @@ import java.io.File;
  * @see <a href="https://lime.software/docs/project-files/xml-format/#java">Lime
  *      <em>project.xml</em> format: &lt;java&gt;</a>
  */
-public class JavaSource {
+public class Java {
 	public File path;
 
 	public void set(File path) {
