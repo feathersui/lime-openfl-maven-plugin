@@ -16,9 +16,12 @@ limitations under the License.
 package com.feathersui.maven.plugin.lime_openfl;
 
 /**
- * Represents the &lt;haxedef&gt; element of the Lime project XML format.
+ * Represents the {@code <haxedef>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#haxedef
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#haxedef">Lime
+ *      <em>project.xml</em> format: &lt;haxedef&gt;</a>
  */
 public class HaxeDef {
 	public String name;

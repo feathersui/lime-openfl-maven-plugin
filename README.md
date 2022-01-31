@@ -96,11 +96,21 @@ To customize the generated _project.xml_ file, add a `<limeProject>` element in 
   <version>1.0.0-SNAPSHOT</version>
   <configuration>
     <limeProject>
+      <app>
+        <main>com.example.MyApp</main>
+        <file>myapp</file>
+      </app>
+      <window>
+        <fps>60</fps>
+        <allowHighDpi>true</allowHighDpi>
+      </window>
       <haxelibs>
         <haxelib>openfl</haxelib>
         <haxelib>actuate</haxelib>
-        <haxelib>feathersui</haxelib>
-      </haxelibs>
+      </haxelib>
+      <icons>
+        <icon>assets/myapp-icon.svg</icon>
+      </icons>
     </limeProject>
   </configuration>
   <executions>

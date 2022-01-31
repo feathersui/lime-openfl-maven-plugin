@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;dependency&gt; element of the Lime project XML format.
+ * Represents the {@code <dependency>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#dependency
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#dependency">Lime
+ *      <em>project.xml</em> format: &lt;dependency&gt;</a>
  */
 public class Dependency {
 	public String name;

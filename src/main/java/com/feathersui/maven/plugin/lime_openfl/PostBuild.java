@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;postbuild&gt; element of the Lime project XML format.
+ * Represents the {@code <postbuild>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#postbuild
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#postbuild">Lime
+ *      <em>project.xml</em> format: &lt;postbuild&gt;</a>
  */
 public class PostBuild {
 	public String haxe = null;

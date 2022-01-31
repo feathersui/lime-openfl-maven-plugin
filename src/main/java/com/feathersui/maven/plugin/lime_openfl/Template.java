@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;template&gt; element of the Lime project XML format.
+ * Represents the {@code <template>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#template
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#template">Lime
+ *      <em>project.xml</em> format: &lt;template&gt;</a>
  */
 public class Template {
 	public File path;

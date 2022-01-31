@@ -16,9 +16,12 @@ limitations under the License.
 package com.feathersui.maven.plugin.lime_openfl;
 
 /**
- * Represents the &lt;section&gt; element of the Lime project XML format.
+ * Represents the {@code <section>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#section
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#section">Lime
+ *      <em>project.xml</em> format: &lt;section&gt;</a>
  */
 public class Section extends LimeProject {
 	public String ifCondition = null;

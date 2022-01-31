@@ -17,9 +17,12 @@
 package com.feathersui.maven.plugin.lime_openfl;
 
 /**
- * Represents the &lt;haxeflag&gt; element of the Lime project XML format.
+ * Represents the {@code <haxeflag>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#haxeflag
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#haxeflag">Lime
+ *      <em>project.xml</em> format: &lt;haxeflag&gt;</a>
  */
 public class HaxeFlag {
 	public String name;

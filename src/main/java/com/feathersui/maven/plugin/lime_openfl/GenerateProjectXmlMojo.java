@@ -30,28 +30,141 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
 /**
- * Generates a _project.xml_ file for a Lime or OpenFL project.
+ * Generates a <em>project.xml</em> file for a
+ * <a href="https://lime.software/">Lime</a>,
+ * <a href="https://openfl.org/">OpenFL</a>, or
+ * <a href="https://feathersui.com/">Feathers UI</a> project. Intended for
+ * developers who prefer to have all of their build configuration in the Maven
+ * <em>pom.xml</em> file, and would rather not maintain two separate files.
+ * 
+ * <blockquote>
+ * <p>
+ * <strong>Hint:</strong> If you already have a Lime <em>project.xml</em>
+ * file, you don't need to generate one. You can simply keep your existing file.
+ * If your <em>project.xml</em> file is the same directory as <em>pom.xml</em>,
+ * it will be detected automatically, and you don't need to configure anything
+ * to use it. However, if <em>project.xml</em> is in a different directory from
+ * <em>pom.xml</em>, you can specify the {@link BuildMojo#projectFile} parameter
+ * to tell the plugin where it is located.
+ * </p>
+ * </blockquote>
+ * 
+ * <p>
+ * The following example demonstrates how to add the
+ * <strong>generate-project-xml</strong> goal to your Maven <em>pom.xml</em>
+ * file.
+ * </p>
+ * 
+ * <pre>
+ * {@code
+ * <build>
+ *   <plugins>
+ *     <plugin>
+ *       <groupId>com.feathersui.maven.plugins</groupId>
+ *       <artifactId>lime-openfl-maven-plugin</artifactId>
+ *       <version>1.0.0-SNAPSHOT</version>
+ *       <executions>
+ *         <execution>
+ *           <goals>
+ *             <!-- add this goal to generate project.xml before building -->
+ *             <goal>generate-project-xml</goal>
+ *             <goal>build</goal>
+ *           </goals>
+ *         </execution>
+ *       </executions>
+ *     </plugin>
+ *   </plugins>
+ * </build>
+ * }
+ * </pre>
+ * 
+ * <p>
+ * The project configuration may be specified using the {@link #limeProject}
+ * parameter. See {@link LimeProject} for complete details.
+ * </p>
+ * 
+ * <pre>
+ * {@code
+ * <build>
+ *   <plugins>
+ *     <plugin>
+ *       <groupId>com.feathersui.maven.plugins</groupId>
+ *       <artifactId>lime-openfl-maven-plugin</artifactId>
+ *       <version>1.0.0-SNAPSHOT</version>
+ *       <configuration>
+ *         <limeProject>
+ *           <!-- configure project here -->
+ *         </limeProject>
+ *       </configuration>
+ *       <executions>
+ *         <execution>
+ *           <goals>
+ *             <goal>generate-project-xml</goal>
+ *             <goal>build</goal>
+ *           </goals>
+ *         </execution>
+ *       </executions>
+ *     </plugin>
+ *   </plugins>
+ * </build>
+ * }
+ * </pre>
+ * 
+ * @see LimeProject
  */
 @Mojo(name = "generate-project-xml", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class GenerateProjectXmlMojo extends AbstractMojo {
-	@Parameter
-	private LimeProject limeProject;
-
 	/**
-	 * Optionally specify a custom path to the Lime project file.
+	 * Allows you to configure the project inside your Maven
+	 * <em>pom.xml</em> file. See {@link LimeProject} for complete details.
+	 * 
+	 * <p>
+	 * The following example demonstrates where the {@code <limeProject>}
+	 * parameter should be added:
+	 * </p>
+	 * 
+	 * <pre>
+	 * {@code
+	 * <build>
+	 *   <plugins>
+	 *     <plugin>
+	 *       <groupId>com.feathersui.maven.plugins</groupId>
+	 *       <artifactId>lime-openfl-maven-plugin</artifactId>
+	 *       <version>1.0.0-SNAPSHOT</version>
+	 *       <configuration>
+	 *         <limeProject>
+	 *           <!-- configure project here -->
+	 *         </limeProject>
+	 *       </configuration>
+	 *       <executions>
+	 *         <execution>
+	 *           <goals>
+	 *             <goal>generate-project-xml</goal>
+	 *             <goal>build</goal>
+	 *           </goals>
+	 *         </execution>
+	 *       </executions>
+	 *     </plugin>
+	 *   </plugins>
+	 * </build>
+	 * }
+	 * </pre>
 	 */
+	@Parameter
+	public LimeProject limeProject;
+
 	@Parameter(property = "lime.projectFile")
 	private File projectFile;
 
 	@Parameter(defaultValue = "${project}", required = true, readonly = true)
 	private MavenProject project;
 
-	/**
-	 * The target directory of the project.xml file.
-	 */
 	@Parameter(defaultValue = "${project.build.directory}", required = true, readonly = true)
 	private File buildDirectory;
 
+	/**
+	 * Generates the Lime <em>project.xml</em> file.
+	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (projectFile != null) {
 			throw new MojoFailureException("Cannot set projectFile parameter with generate-project-xml goal");

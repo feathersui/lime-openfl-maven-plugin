@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;certificate&gt; element of the Lime project XML format.
+ * Represents the {@code <certificate>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#certificate
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#certificate">Lime
+ *      <em>project.xml</em> format: &lt;certificate&gt;</a>
  */
 public class Certificate {
 	public File path = null;

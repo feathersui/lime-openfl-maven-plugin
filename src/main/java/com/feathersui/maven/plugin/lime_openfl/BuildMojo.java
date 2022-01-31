@@ -36,83 +36,129 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 /**
- * Builds a Lime or OpenFL project.
+ * Builds a <a href="https://lime.software/">Lime</a>,
+ * <a href="https://openfl.org/">OpenFL</a>, or
+ * <a href="https://feathersui.com/">Feathers UI</a> project.
+ * 
+ * <p>
+ * The following example demonstrates how to add the <strong>build</strong> goal
+ * to your Maven <em>pom.xml</em> file.
+ * </p>
+ * 
+ * <pre>
+ * {@code
+ * <build>
+ *   <plugins>
+ *     <plugin>
+ *       <groupId>com.feathersui.maven.plugins</groupId>
+ *       <artifactId>lime-openfl-maven-plugin</artifactId>
+ *       <version>1.0.0-SNAPSHOT</version>
+ *       <executions>
+ *         <execution>
+ *           <goals>
+ *             <!-- add this goal to build your Lime project -->
+ *             <goal>build</goal>
+ *           </goals>
+ *         </execution>
+ *       </executions>
+ *     </plugin>
+ *   </plugins>
+ * </build>
+ * }
+ * </pre>
+ * 
+ * @see <a href=
+ *      "https://lime.software/docs/command-line-tools/basic-commands/#lime-build"><strong>lime
+ *      build</strong> command</a>
  */
 @Mojo(name = "build", defaultPhase = LifecyclePhase.COMPILE)
 public class BuildMojo extends AbstractMojo {
 	/**
-	 * Optionally specify a custom path to the Haxelib executable.
+	 * Optionally specify a custom path to the Haxelib executable. If not set,
+	 * the build will assume that a Haxelib executable can be found on the
+	 * system path.
 	 */
 	@Parameter(property = "lime.haxelib")
-	private File haxelibExecutable;
+	public File haxelibExecutable;
 
 	/**
-	 * Optionally specify a custom path to the Lime project file.
+	 * Optionally specify a custom path to a Lime <em>project.xml</em> file.
+	 * If not set, will fall back to searching for a <em>project.xml</em> file
+	 * in the same directory as the Maven <em>pom.xml</em> file.
+	 * 
+	 * <p>
+	 * If using {@link GenerateProjectXmlMojo}, this field will be populated
+	 * with the path to the generated <em>project.xml</em> file.
+	 * </p>
 	 */
 	@Parameter(defaultValue = "project.xml", property = "lime.projectFile")
-	private File projectFile;
+	public File projectFile;
 
 	/**
 	 * Specify the Lime build target, such as "html5", "hl", "neko", "ios",
 	 * "android", "windows", "mac", or "linux".
 	 */
 	@Parameter(defaultValue = "html5", property = "lime.target")
-	private String target;
+	public String target;
 
 	/**
-	 * Specify if the build is debug instead of release.
+	 * Specify if the build is debug instead of release using the {@code -debug}
+	 * command line option.
 	 */
 	@Parameter(defaultValue = "false", property = "lime.debug")
-	private boolean isDebug;
+	public boolean isDebug;
 
 	/**
-	 * Specify if the build is final instead of release.
+	 * Specify if the build is final instead of release using the {@code -final}
+	 * command line option.
 	 */
 	@Parameter(defaultValue = "false", property = "lime.final")
-	private boolean isFinal;
+	public boolean isFinal;
 
 	/**
-	 * Specify additional <haxedef/> values.
+	 * Specify additional {@code <haxedef/>} values using the {@code --haxedef}
+	 * command line option.
 	 */
 	@Parameter
-	private String[] additionalHaxedefs;
+	public String[] additionalHaxedefs;
 
 	/**
-	 * Specify additional <haxelib/> values.
+	 * Specify additional {@code <haxelib/>} values using the {@code --haxelib}
+	 * command line option.
 	 */
 	@Parameter
-	private String[] additionalHaxelibs;
+	public String[] additionalHaxelibs;
 
 	/**
-	 * Specify additional <source/> values.
+	 * Specify additional {@code <source/>} values using the {@code --source}
+	 * command line option.
 	 */
 	@Parameter
-	private String[] additionalSources;
+	public String[] additionalSources;
 
 	/**
-	 * Specify additional <dependency/> values.
+	 * Specify additional {@code <dependency/>} values using the
+	 * {@code --dependency} command line option.
 	 */
 	@Parameter
-	private String[] additionalDependencies;
+	public String[] additionalDependencies;
 
 	/**
-	 * The directory to run the compiler.
+	 * Optionally sets the name of the output file using the {@code --app-file}
+	 * command line option.
 	 */
+	@Parameter
+	public String outputFileName;
+
 	@Parameter(defaultValue = "${basedir}", required = true, readonly = true)
 	private File basedir;
 
-	/**
-	 * The target directory of the compiler.
-	 */
 	@Parameter(defaultValue = "${project.build.directory}", required = true, readonly = true)
 	private File buildDirectory;
 
 	/**
-	 * Sets the name of the output file.
+	 * Builds the Lime project.
 	 */
-	@Parameter
-	private String outputFileName;
-
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (isDebug && isFinal) {
 			throw new MojoFailureException("Cannot set both isDebug and isFinal parameters for Lime project");

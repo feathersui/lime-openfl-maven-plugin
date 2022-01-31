@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;prebuild&gt; element of the Lime project XML format.
+ * Represents the {@code <prebuild>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#prebuild
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#prebuild">Lime
+ *      <em>project.xml</em> format: &lt;prebuild&gt;</a>
  */
 public class PreBuild {
 	public String haxe = null;

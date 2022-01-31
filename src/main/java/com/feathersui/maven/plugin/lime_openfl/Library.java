@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;library&gt; element of the Lime project XML format.
+ * Represents the {@code <library>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#library
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#library">Lime
+ *      <em>project.xml</em> format: &lt;library&gt;</a>
  */
 public class Library {
 	public String name = null;

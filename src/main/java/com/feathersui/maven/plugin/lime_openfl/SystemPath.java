@@ -18,9 +18,11 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;path&gt; element of the Lime project XML format.
+ * Represents the {@code <path>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#path
+ * @see <a href="https://lime.software/docs/project-files/xml-format/#path">Lime
+ *      <em>project.xml</em> format: &lt;path&gt;</a>
  */
 public class SystemPath {
 	public File value;

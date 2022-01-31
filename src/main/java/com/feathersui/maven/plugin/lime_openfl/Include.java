@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;include&gt; element of the Lime project XML format.
+ * Represents the {@code <include>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#include
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#include">Lime
+ *      <em>project.xml</em> format: &lt;include&gt;</a>
  */
 public class Include {
 	public File path = null;

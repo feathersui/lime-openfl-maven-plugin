@@ -18,9 +18,11 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;icon&gt; element of the Lime project XML format.
+ * Represents the {@code <icon>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#icon
+ * @see <a href="https://lime.software/docs/project-files/xml-format/#icon">Lime
+ *      <em>project.xml</em> format: &lt;icon&gt;</a>
  */
 public class Icon {
 	public File path;

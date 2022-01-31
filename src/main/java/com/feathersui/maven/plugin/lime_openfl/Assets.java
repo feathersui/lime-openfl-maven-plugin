@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;assets&gt; element of the Lime project XML format.
+ * Represents the {@code <assets>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#assets
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#assets">Lime
+ *      <em>project.xml</em> format: &lt;assets&gt;</a>
  */
 public class Assets {
 	public File path = null;

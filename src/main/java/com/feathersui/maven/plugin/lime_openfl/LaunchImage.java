@@ -18,9 +18,12 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;launchImage&gt; element of the Lime project XML format.
+ * Represents the {@code <launchImage>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#launchimage
+ * @see <a href=
+ *      "https://lime.software/docs/project-files/xml-format/#launchimage">Lime
+ *      <em>project.xml</em> format: &lt;launchimage&gt;</a>
  */
 public class LaunchImage {
 	public File path;

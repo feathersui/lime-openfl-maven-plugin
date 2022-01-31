@@ -18,9 +18,11 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 
 /**
- * Represents the &lt;ndll&gt; element of the Lime project XML format.
+ * Represents the {@code <ndll>} element of the Lime <em>project.xml</em>
+ * format.
  * 
- * @see https://lime.software/docs/project-files/xml-format/#ndll
+ * @see <a href="https://lime.software/docs/project-files/xml-format/#ndll">Lime
+ *      <em>project.xml</em> format: &lt;ndll&gt;</a>
  */
 public class Ndll {
 	public String name;
