@@ -15,6 +15,11 @@ limitations under the License.
 */
 package com.feathersui.maven.plugin.lime_openfl;
 
+/**
+ * Represents the &lt;meta&gt; element of the Lime project XML format.
+ * 
+ * @see https://lime.software/docs/project-files/xml-format/#meta
+ */
 public class Meta {
 	public String title = null;
 	public String description = null;

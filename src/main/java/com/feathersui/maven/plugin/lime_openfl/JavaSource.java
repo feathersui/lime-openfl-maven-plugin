@@ -17,6 +17,11 @@ package com.feathersui.maven.plugin.lime_openfl;
 
 import java.io.File;
 
+/**
+ * Represents the &lt;java&gt; element of the Lime project XML format.
+ * 
+ * @see https://lime.software/docs/project-files/xml-format/#java
+ */
 public class JavaSource {
 	public File path;
 

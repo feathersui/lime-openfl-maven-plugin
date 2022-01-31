@@ -15,6 +15,11 @@ limitations under the License.
 */
 package com.feathersui.maven.plugin.lime_openfl;
 
+/**
+ * Represents the &lt;language&gt; element of the Lime project XML format.
+ * 
+ * @see https://lime.software/docs/project-files/xml-format/#language
+ */
 public class Language {
 	public String name;
 

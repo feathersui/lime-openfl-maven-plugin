@@ -15,6 +15,11 @@ limitations under the License.
 */
 package com.feathersui.maven.plugin.lime_openfl;
 
+/**
+ * Represents the &lt;app&gt; element of the Lime project XML format.
+ * 
+ * @see https://lime.software/docs/project-files/xml-format/#app
+ */
 public class App {
 	public String main = null;
 	public String file = null;

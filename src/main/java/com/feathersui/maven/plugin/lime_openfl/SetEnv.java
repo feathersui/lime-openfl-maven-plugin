@@ -15,6 +15,11 @@ limitations under the License.
 */
 package com.feathersui.maven.plugin.lime_openfl;
 
+/**
+ * Represents the &lt;setenv&gt; element of the Lime project XML format.
+ * 
+ * @see https://lime.software/docs/project-files/xml-format/#setenv
+ */
 public class SetEnv {
 	public String name;
 
