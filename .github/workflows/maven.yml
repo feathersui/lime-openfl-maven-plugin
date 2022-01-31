@@ -19,9 +19,14 @@ jobs:
           distribution: "temurin"
           java-version: "8"
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: mvn -B package site --file pom.xml
       - uses: actions/upload-artifact@v2
         with:
           name: lime-openfl-maven-plugin
           path: target/lime-openfl-maven-plugin-*.jar
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v2
+        with:
+          name: lime-openfl-maven-plugin-javadoc
+          path: target/site/apidocs/
           if-no-files-found: error
