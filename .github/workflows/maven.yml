@@ -19,14 +19,28 @@ jobs:
           distribution: "temurin"
           java-version: "8"
       - name: Build with Maven
-        run: mvn -B package site --file pom.xml
-      - uses: actions/upload-artifact@v2
+        run: mvn -B install site --file pom.xml
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
         with:
           name: lime-openfl-maven-plugin
           path: target/lime-openfl-maven-plugin-*.jar
           if-no-files-found: error
-      - uses: actions/upload-artifact@v2
+      - name: Upload API Documentation
+        uses: actions/upload-artifact@v2
         with:
           name: lime-openfl-maven-plugin-javadoc
           path: target/site/apidocs/
           if-no-files-found: error
+      - name: "Build Sample: Lime"
+        working-directory: lime-project
+        run: mvn -B compile --file pom.xml
+      - name: "Build Sample: Lime (Unconfigured)""
+        working-directory: unconfigured-lime-project
+        run: mvn -B compile --file pom.xml
+      - name: "Build Sample: OpenFL"
+        working-directory: openfl-project
+        run: mvn -B compile --file pom.xml
+      - name: "Build Sample: Feathers UI"
+        working-directory: feathersui-project
+        run: mvn -B compile --file pom.xml
