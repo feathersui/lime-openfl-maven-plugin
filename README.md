@@ -87,7 +87,7 @@ If you don't have an existing Lime _project.xml_ file, or if you prefer to manag
 </project>
 ```
 
-To customize the generated _project.xml_ file, add a `<limeProject>` parameter in the `configuration` section for the plugin.
+To customize the generated _project.xml_ file, add a [`<limeProject>` parameter](https://feathersui.github.io/lime-openfl-maven-plugin/apidocs/com/feathersui/maven/plugin/lime_openfl/LimeProject.html) in the `configuration` section for the plugin.
 
 ```xml
 <plugin>
