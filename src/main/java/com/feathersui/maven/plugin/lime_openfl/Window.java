@@ -351,7 +351,7 @@ public class Window {
 	 * }
 	 * </pre>
 	 */
-	public Boolean antialiasing = null;
+	public Integer antialiasing = null;
 
 	/**
 	 * Whether high DPI rendering is allowed or not. Represents the
