@@ -41,14 +41,14 @@ jobs:
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.2.4
+      - name: "Build Sample: OpenFL"
+        working-directory: samples/openfl-project
+        run: mvn -B compile --file pom.xml
       - name: "Build Sample: Lime"
         working-directory: samples/lime-project
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: Lime (Unconfigured)"
         working-directory: samples/unconfigured-lime-project
-        run: mvn -B compile --file pom.xml
-      - name: "Build Sample: OpenFL"
-        working-directory: samples/openfl-project
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: Feathers UI"
         working-directory: samples/feathersui-project
