@@ -32,6 +32,9 @@ jobs:
           name: lime-openfl-maven-plugin-javadoc
           path: target/site/apidocs/
           if-no-files-found: error
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.2.4
       - name: "Build Sample: Lime"
         working-directory: lime-project
         run: mvn -B compile --file pom.xml
