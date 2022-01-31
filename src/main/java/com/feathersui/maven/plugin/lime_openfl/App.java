@@ -125,7 +125,7 @@ public class App {
 	 * }
 	 * </pre>
 	 */
-	public Integer swfVersion = null;
+	public Float swfVersion = null;
 
 	/**
 	 * Optionally sets the minimum SWF version for `flash` and `air` targets.
@@ -146,5 +146,5 @@ public class App {
 	 * }
 	 * </pre>
 	 */
-	public Integer minSwfVersion = null;
+	public Float minSwfVersion = null;
 }
