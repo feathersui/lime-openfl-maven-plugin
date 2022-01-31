@@ -44,32 +44,32 @@ public class BuildMojo extends AbstractMojo {
 	 * Optionally specify a custom path to the Haxelib executable.
 	 */
 	@Parameter(property = "lime.haxelib")
-	public File haxelibExecutable;
+	private File haxelibExecutable;
 
 	/**
 	 * Optionally specify a custom path to the Lime project file.
 	 */
-	@Parameter(defaultValue = "project.xml", property = "lime.file")
-	public File projectFile;
+	@Parameter(defaultValue = "project.xml", property = "lime.projectFile")
+	private File projectFile;
 
 	/**
 	 * Specify the Lime build target, such as "html5", "hl", "neko", "ios",
 	 * "android", "windows", "mac", or "linux".
 	 */
 	@Parameter(defaultValue = "html5", property = "lime.target")
-	public String target;
+	private String target;
 
 	/**
 	 * Specify if the build is debug instead of release.
 	 */
 	@Parameter(defaultValue = "false", property = "lime.debug")
-	public boolean isDebug;
+	private boolean isDebug;
 
 	/**
 	 * Specify if the build is final instead of release.
 	 */
 	@Parameter(defaultValue = "false", property = "lime.final")
-	public boolean isFinal;
+	private boolean isFinal;
 
 	/**
 	 * Specify additional <haxedef/> values.
@@ -96,13 +96,13 @@ public class BuildMojo extends AbstractMojo {
 	private String[] additionalDependencies;
 
 	/**
-	 * The directory to run the compiler from if fork is true.
+	 * The directory to run the compiler.
 	 */
 	@Parameter(defaultValue = "${basedir}", required = true, readonly = true)
 	private File basedir;
 
 	/**
-	 * The target directory of the compiler if fork is true.
+	 * The target directory of the compiler.
 	 */
 	@Parameter(defaultValue = "${project.build.directory}", required = true, readonly = true)
 	private File buildDirectory;
@@ -115,7 +115,7 @@ public class BuildMojo extends AbstractMojo {
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (isDebug && isFinal) {
-			throw new MojoExecutionException("Cannot set both isDebug and isFinal parameters for Lime project");
+			throw new MojoFailureException("Cannot set both isDebug and isFinal parameters for Lime project");
 		}
 		try {
 			checkHaxelibs();
