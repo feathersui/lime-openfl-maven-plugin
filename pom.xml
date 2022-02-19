@@ -23,6 +23,8 @@ limitations under the License.
   <packaging>maven-plugin</packaging>
 
   <name>Lime and OpenFL Maven Plugin</name>
+  <description>A Maven plugin for building Lime, OpenFL, and Feathers UI projects.</description>
+  <url>https://feathersui.github.io/lime-openfl-maven-plugin/</url>
 
   <licenses>
     <license>
@@ -31,9 +33,17 @@ limitations under the License.
     </license>
   </licenses>
 
+   <developers>
+    <developer>
+      <name>Josh Tynjala</name>
+      <organization>Feathers UI</organization>
+      <organizationUrl>https://feathersui.com</organizationUrl>
+    </developer>
+  </developers>
+
   <scm>
-    <connection>scm:git:https://github.com/feathersui/lime-openfl-maven-plugin.git</connection>
-    <developerConnection>scm:git:https://github.com/feathersui/lime-openfl-maven-plugin.git</developerConnection>
+    <connection>scm:git:git://github.com/feathersui/lime-openfl-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://github.com:feathersui/lime-openfl-maven-plugin.git</developerConnection>
     <url>https://github.com/feathersui/lime-openfl-maven-plugin</url>
     <tag>HEAD</tag>
   </scm>
@@ -62,6 +72,34 @@ limitations under the License.
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
   <reporting>
