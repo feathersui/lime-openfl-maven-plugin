@@ -35,6 +35,7 @@ package com.feathersui.maven.plugin.lime_openfl;
  *       <groupId>com.feathersui.maven.plugins</groupId>
  *       <artifactId>lime-openfl-maven-plugin</artifactId>
  *       <version>1.0.0-SNAPSHOT</version>
+ * 		 <extensions>true</extensions>
  *       <configuration>
  *         <limeProject>
  *           <app>
@@ -54,14 +55,6 @@ package com.feathersui.maven.plugin.lime_openfl;
  *           </icons>
  *         </limeProject>
  *       </configuration>
- *       <executions>
- *         <execution>
- *           <goals>
- *             <goal>generate-project-xml</goal>
- *             <goal>build</goal>
- *           </goals>
- *         </execution>
- *       </executions>
  *     </plugin>
  *   </plugins>
  * </build>

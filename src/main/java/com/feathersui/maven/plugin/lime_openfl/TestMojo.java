@@ -29,7 +29,10 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.WriterStreamConsumer;
 
 /**
- * 
+ * Executes a <a href="https://lib.haxe.org/p/utest/">utest</a> runner for a
+ * <a href="https://lime.software/">Lime</a>,
+ * <a href="https://openfl.org/">OpenFL</a>, or
+ * <a href="https://feathersui.com/">Feathers UI</a> project.
  */
 @Mojo(name = "test", defaultPhase = LifecyclePhase.TEST)
 public class TestMojo extends BaseMojo {

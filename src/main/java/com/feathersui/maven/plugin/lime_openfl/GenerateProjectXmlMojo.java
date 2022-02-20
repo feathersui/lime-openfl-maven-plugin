@@ -50,35 +50,6 @@ import org.apache.maven.project.MavenProject;
  * </blockquote>
  * 
  * <p>
- * The following example demonstrates how to add the
- * <strong>generate-project-xml</strong> goal to your Maven <em>pom.xml</em>
- * file.
- * </p>
- * 
- * <pre>
- * {@code
- * <build>
- *   <plugins>
- *     <plugin>
- *       <groupId>com.feathersui.maven.plugins</groupId>
- *       <artifactId>lime-openfl-maven-plugin</artifactId>
- *       <version>1.0.0-SNAPSHOT</version>
- *       <executions>
- *         <execution>
- *           <goals>
- *             <!-- add this goal to generate project.xml before building -->
- *             <goal>generate-project-xml</goal>
- *             <goal>build</goal>
- *           </goals>
- *         </execution>
- *       </executions>
- *     </plugin>
- *   </plugins>
- * </build>
- * }
- * </pre>
- * 
- * <p>
  * The project configuration may be specified using the {@link #limeProject}
  * parameter. See {@link LimeProject} for complete details.
  * </p>
@@ -91,19 +62,12 @@ import org.apache.maven.project.MavenProject;
  *       <groupId>com.feathersui.maven.plugins</groupId>
  *       <artifactId>lime-openfl-maven-plugin</artifactId>
  *       <version>1.0.0-SNAPSHOT</version>
+ *       <extensions>true</extensions>
  *       <configuration>
  *         <limeProject>
  *           <!-- configure project here -->
  *         </limeProject>
  *       </configuration>
- *       <executions>
- *         <execution>
- *           <goals>
- *             <goal>generate-project-xml</goal>
- *             <goal>build</goal>
- *           </goals>
- *         </execution>
- *       </executions>
  *     </plugin>
  *   </plugins>
  * </build>
@@ -131,19 +95,12 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 	 *       <groupId>com.feathersui.maven.plugins</groupId>
 	 *       <artifactId>lime-openfl-maven-plugin</artifactId>
 	 *       <version>1.0.0-SNAPSHOT</version>
+	 *       <extensions>true</extensions>
 	 *       <configuration>
 	 *         <limeProject>
 	 *           <!-- configure project here -->
 	 *         </limeProject>
 	 *       </configuration>
-	 *       <executions>
-	 *         <execution>
-	 *           <goals>
-	 *             <goal>generate-project-xml</goal>
-	 *             <goal>build</goal>
-	 *           </goals>
-	 *         </execution>
-	 *       </executions>
 	 *     </plugin>
 	 *   </plugins>
 	 * </build>

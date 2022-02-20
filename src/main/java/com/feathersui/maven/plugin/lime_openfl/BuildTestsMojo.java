@@ -39,7 +39,14 @@ import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.cli.WriterStreamConsumer;
 
 /**
+ * Detects and builds the <a href="https://lib.haxe.org/p/utest/">utest</a>
+ * tests for a <a href="https://lime.software/">Lime</a>,
+ * <a href="https://openfl.org/">OpenFL</a>, or
+ * <a href="https://feathersui.com/">Feathers UI</a> project.
  * 
+ * <p>
+ * The tests should be located in the <em>src/test/haxe</em> directory.
+ * </p>
  */
 @Mojo(name = "test-build", defaultPhase = LifecyclePhase.TEST_COMPILE)
 public class BuildTestsMojo extends BaseBuildMojo {

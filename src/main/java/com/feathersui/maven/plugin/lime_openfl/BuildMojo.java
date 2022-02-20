@@ -33,33 +33,6 @@ import org.codehaus.plexus.util.cli.WriterStreamConsumer;
  * <a href="https://openfl.org/">OpenFL</a>, or
  * <a href="https://feathersui.com/">Feathers UI</a> project.
  * 
- * <p>
- * The following example demonstrates how to add the <strong>build</strong> goal
- * to your Maven <em>pom.xml</em> file.
- * </p>
- * 
- * <pre>
- * {@code
- * <build>
- *   <plugins>
- *     <plugin>
- *       <groupId>com.feathersui.maven.plugins</groupId>
- *       <artifactId>lime-openfl-maven-plugin</artifactId>
- *       <version>1.0.0-SNAPSHOT</version>
- *       <executions>
- *         <execution>
- *           <goals>
- *             <!-- add this goal to build your Lime project -->
- *             <goal>build</goal>
- *           </goals>
- *         </execution>
- *       </executions>
- *     </plugin>
- *   </plugins>
- * </build>
- * }
- * </pre>
- * 
  * @see <a href=
  *      "https://lime.software/docs/command-line-tools/basic-commands/#lime-build"><strong>lime
  *      build</strong> command</a>
