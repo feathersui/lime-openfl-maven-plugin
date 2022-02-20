@@ -55,4 +55,4 @@ jobs:
         run: mvn -B compile --file pom.xml
       - name: "Build Sample: OpenFL with Tests"
         working-directory: samples/openfl-project-with-tests
-        run: mvn -B compile --file pom.xml
+        run: mvn -B test --file pom.xml
