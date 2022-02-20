@@ -162,6 +162,9 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 	@Parameter(defaultValue = "${project.build.directory}", required = true, readonly = true)
 	private File buildDirectory;
 
+	@Parameter(defaultValue = "${basedir}/src/main/haxe", required = true, readonly = true)
+	private File mainSrcDirectory;
+
 	@Parameter(defaultValue = "${basedir}", required = true, readonly = true)
 	protected File basedir;
 
@@ -243,13 +246,12 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 			}
 		}
 		// set a default source path, if necessary
-		File defaultSourcePath = new File("src/main/haxe");
 		if (limeProject == null || limeProject.sources == null
 				|| Arrays.asList(limeProject.sources).stream()
 						.noneMatch(
-								source -> defaultSourcePath.getAbsolutePath().equals(source.path.getAbsolutePath()))) {
+								source -> mainSrcDirectory.getAbsolutePath().equals(source.path.getAbsolutePath()))) {
 			builder.append("<source path=\"")
-					.append(defaultSourcePath.getAbsolutePath())
+					.append(mainSrcDirectory.getAbsolutePath())
 					.append("\"/>\n");
 		}
 		// make sure that either the lime or openfl haxelib is included
