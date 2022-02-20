@@ -162,12 +162,27 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 	@Parameter(defaultValue = "${project.build.directory}", required = true, readonly = true)
 	private File buildDirectory;
 
+	@Parameter(defaultValue = "${basedir}", required = true, readonly = true)
+	protected File basedir;
+
 	/**
 	 * Generates the Lime <em>project.xml</em> file.
 	 */
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		if (limeProject == null) {
+			if (projectFile != null) {
+				getLog().debug("Skipping generate-project-xml: " + projectFile.getParentFile().getName());
+				return;
+			}
+			File defaultProjectFile = new File(basedir, "project.xml");
+			if (defaultProjectFile.exists()) {
+				getLog().debug("Skipping generate-project-xml: " + defaultProjectFile.getParentFile().getName());
+				return;
+			}
+		}
+
 		if (projectFile != null) {
-			throw new MojoFailureException("Cannot set projectFile parameter with generate-project-xml goal");
+			throw new MojoFailureException("Cannot set both projectFile parameter and limeProject parameters");
 		}
 
 		try {

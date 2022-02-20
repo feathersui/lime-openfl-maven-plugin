@@ -6,7 +6,7 @@
   <groupId>com.example</groupId>
   <artifactId>unconfigured-lime-project-example</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
+  <packaging>lime-openfl</packaging>
 
   <build>
     <plugins>
@@ -14,16 +14,9 @@
         <groupId>com.feathersui.maven.plugins</groupId>
         <artifactId>lime-openfl-maven-plugin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>generate-project-xml</goal>
-              <goal>build</goal>
-            </goals>
-          </execution>
-        </executions>
+        <extensions>true</extensions>
         <!--
-          there's no <configuration> section!
+          there's no <configuration> section and no project.xml file!
           the plugin should automatically do some things:
           - add src/main/haxe to <source>
           - use Main.hx as the entry point

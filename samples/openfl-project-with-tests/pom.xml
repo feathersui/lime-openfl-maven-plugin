@@ -6,7 +6,7 @@
   <groupId>com.example</groupId>
   <artifactId>openfl-project-example</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
+  <packaging>lime-openfl</packaging>
 
   <build>
     <plugins>
@@ -14,20 +14,9 @@
         <groupId>com.feathersui.maven.plugins</groupId>
         <artifactId>lime-openfl-maven-plugin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <executions>
-          <execution>
-            <configuration>
-              <target>neko</target>
-            </configuration>
-            <goals>
-              <goal>generate-project-xml</goal>
-              <goal>build</goal>
-              <goal>test-build</goal>
-              <goal>test</goal>
-            </goals>
-          </execution>
-        </executions>
+        <extensions>true</extensions>
         <configuration>
+          <target>neko</target>
           <limeProject>
             <app>
               <main>com.example.MyOpenFLProject</main>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <app main="com.example.MyOpenFLProject" file="my_openfl_project"/>
+  <source path="src"/>
+  <haxelib name="openfl"/>
+</project>

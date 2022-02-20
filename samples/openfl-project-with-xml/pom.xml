@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>lime-project-example</artifactId>
+  <artifactId>openfl-project-example</artifactId>
   <version>1.0.0</version>
   <packaging>lime-openfl</packaging>
 
@@ -15,17 +15,10 @@
         <artifactId>lime-openfl-maven-plugin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <extensions>true</extensions>
-        <configuration>
-          <limeProject>
-            <app>
-              <main>com.example.MyLimeProject</main>
-              <file>my_lime_project</file>
-            </app>
-            <haxelibs>
-              <haxelib>lime</haxelib>
-            </haxelibs>
-          </limeProject>
-        </configuration>
+        <!--
+          there's no <configuration> section!
+          the plugin should automatically detect project.xml
+        -->
       </plugin>
     </plugins>
   </build>

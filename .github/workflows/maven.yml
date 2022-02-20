@@ -53,6 +53,9 @@ jobs:
       - name: "Build Sample: Feathers UI"
         working-directory: samples/feathersui-project
         run: mvn -B compile --file pom.xml
+      - name: "Build Sample: OpenFL with project.xml"
+        working-directory: samples/openfl-project-with-xml
+        run: mvn -B test --file pom.xml
       - name: "Build Sample: OpenFL with Tests"
         working-directory: samples/openfl-project-with-tests
         run: mvn -B test --file pom.xml
