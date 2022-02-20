@@ -20,6 +20,7 @@ import java.io.File;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 /**
  * The base class for all Lime/OpenFL goals.
@@ -55,6 +56,9 @@ public abstract class BaseMojo extends AbstractMojo {
 
 	@Parameter(defaultValue = "${basedir}", required = true, readonly = true)
 	protected File basedir;
+
+	@Parameter(defaultValue = "${project}", required = true, readonly = true)
+	protected MavenProject project;
 
 	protected String getHaxelibPath() {
 		String result = "haxelib";

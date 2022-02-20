@@ -61,6 +61,9 @@ public class BuildTestsMojo extends BaseBuildMojo {
 	@Parameter(defaultValue = "${project.build.directory}/utest/generated-sources", required = true, readonly = true)
 	private File testGeneratedSrcDirectory;
 
+	@Parameter(property = "maven.test.skip", readonly = true)
+	private boolean skip;
+
 	@Override
 	protected void checkHaxelibs() throws Exception {
 		super.checkHaxelibs();
@@ -69,13 +72,22 @@ public class BuildTestsMojo extends BaseBuildMojo {
 
 	@Override
 	protected void build() throws CommandLineException, MojoFailureException, MojoExecutionException {
-		getLog().debug("Building tests: " + projectFile.getParentFile().getName());
+		if (skip) {
+			getLog().info("Not building test sources");
+			return;
+		}
 
 		try {
-			generateTestSources();
+			boolean hasTests = generateTestSources();
+			if (!hasTests) {
+				project.getProperties().setProperty("maven.test.skip", "true");
+				return;
+			}
 		} catch (Exception e) {
 			throw new MojoFailureException("Failed to generate Lime tests sources");
 		}
+
+		getLog().debug("Building tests: " + basedir.getName());
 
 		Commandline commandLine = new Commandline();
 		commandLine.setWorkingDirectory(basedir);
@@ -127,7 +139,10 @@ public class BuildTestsMojo extends BaseBuildMojo {
 		}
 	}
 
-	protected void generateTestSources() throws MojoExecutionException, IOException {
+	protected boolean generateTestSources() throws MojoExecutionException, IOException {
+		if (!testSrcDirectory.exists()) {
+			return false;
+		}
 		Path testSrcDirectoryPath = testSrcDirectory.toPath();
 		List<String> testQualifiedNames = Files.walk(testSrcDirectoryPath).map(Path::toFile).filter((File file) -> {
 			if (!file.getName().endsWith(".hx")) {
@@ -161,6 +176,10 @@ public class BuildTestsMojo extends BaseBuildMojo {
 		}).map(File::toPath).map(path -> testSrcDirectoryPath.relativize(path).toString().replace("/", ".")
 				.replace("\\", ".").replace(".hx", "")).collect(Collectors.toList());
 
+		if (testQualifiedNames.size() == 0) {
+			return false;
+		}
+
 		StringBuilder mainBuilder = new StringBuilder()
 				.append("import openfl.display.Sprite;\n")
 				.append("import utest.Runner;\n")
@@ -185,5 +204,7 @@ public class BuildTestsMojo extends BaseBuildMojo {
 		} catch (Exception e) {
 			throw new MojoExecutionException("Fatal error generating Lime tests project file", e);
 		}
+
+		return true;
 	}
 }

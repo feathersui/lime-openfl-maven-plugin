@@ -36,7 +36,18 @@ public class TestMojo extends BaseMojo {
 	@Parameter(defaultValue = "${project.build.directory}/utest", required = true, readonly = true)
 	private File testBuildDirectory;
 
+	@Parameter(defaultValue = "${basedir}/src/test/haxe", required = true, readonly = true)
+	private File testSrcDirectory;
+
+	@Parameter(defaultValue = "${maven.test.skip}", readonly = true)
+	private boolean skip;
+
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		if (skip) {
+			getLog().info("Not running tests");
+			return;
+		}
+
 		Commandline commandLine = new Commandline();
 		commandLine.setWorkingDirectory(basedir);
 		commandLine.setExecutable(getHaxelibPath());

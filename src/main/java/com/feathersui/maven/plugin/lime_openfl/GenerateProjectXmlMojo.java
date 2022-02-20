@@ -171,12 +171,12 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		if (limeProject == null) {
 			if (projectFile != null) {
-				getLog().debug("Skipping generate-project-xml: " + projectFile.getParentFile().getName());
+				getLog().debug("Skipping generate-project-xml: " + basedir.getName());
 				return;
 			}
 			File defaultProjectFile = new File(basedir, "project.xml");
 			if (defaultProjectFile.exists()) {
-				getLog().debug("Skipping generate-project-xml: " + defaultProjectFile.getParentFile().getName());
+				getLog().debug("Skipping generate-project-xml: " + basedir.getName());
 				return;
 			}
 		}

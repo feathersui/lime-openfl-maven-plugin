@@ -78,7 +78,7 @@ public class BuildMojo extends BaseBuildMojo {
 
 	@Override
 	protected void build() throws CommandLineException, MojoFailureException {
-		getLog().debug("Building project: " + projectFile.getParentFile().getName());
+		getLog().debug("Building project: " + basedir.getName());
 		Commandline commandLine = new Commandline();
 		commandLine.setWorkingDirectory(basedir);
 		commandLine.setExecutable(getHaxelibPath());
