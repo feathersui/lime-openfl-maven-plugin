@@ -4,9 +4,11 @@ A plugin to build [Lime](https://lime.software/), [OpenFL](https://openfl.org/),
 
 Performs the following actions:
 
-- Can use your existing [Lime _project.xml_ file](https://lime.software/docs/project-files/xml-format/), or it can generate one from parameters in your Maven _pom.xml_ file.
-- If necessary, installs any Haxelib libraries specified in _project.xml_.
-- Executes the `lime build` command for the specified target.
+- Either detects your existing [Lime _project.xml_ file](https://lime.software/docs/project-files/xml-format/) or generates one from the [`limeProject` parameter](https://feathersui.github.io/lime-openfl-maven-plugin/apidocs/com/feathersui/maven/plugin/lime_openfl/LimeProject.html) configured in your Maven _pom.xml_ file.
+- Installs any Haxelib libraries specified in _project.xml_ or _pom.xml_.
+- Executes the `lime build` command for the specified target to build your application.
+- Detects [utest](https://lib.haxe.org/p/utest/) test cases and generates a runner.
+- Executes the test runner.
 
 ## Prerequisites
 
