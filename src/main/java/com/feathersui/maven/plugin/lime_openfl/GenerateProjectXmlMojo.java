@@ -165,6 +165,9 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 	@Parameter(defaultValue = "${basedir}/src/main/haxe", required = true, readonly = true)
 	private File mainSrcDirectory;
 
+	@Parameter(defaultValue = "${basedir}/src/test/haxe", required = true, readonly = true)
+	private File testSrcDirectory;
+
 	@Parameter(defaultValue = "${basedir}", required = true, readonly = true)
 	protected File basedir;
 
@@ -254,10 +257,23 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 					.append(mainSrcDirectory.getAbsolutePath())
 					.append("\"/>\n");
 		}
+		if (limeProject == null || limeProject.sources == null
+				|| Arrays.asList(limeProject.sources).stream()
+						.noneMatch(
+								source -> testSrcDirectory.getAbsolutePath().equals(source.path.getAbsolutePath()))) {
+			builder.append("<source path=\"")
+					.append(testSrcDirectory.getAbsolutePath())
+					.append("\"/>\n");
+		}
 		// make sure that either the lime or openfl haxelib is included
 		if (limeProject == null || limeProject.haxelibs == null || Arrays.asList(limeProject.haxelibs).stream()
 				.noneMatch(haxelib -> "lime".equals(haxelib.name) || "openfl".equals(haxelib.name))) {
 			builder.append("<haxelib name=\"lime\"/>\n");
+		}
+		// make sure that utest haxelib is included
+		if (limeProject == null || limeProject.haxelibs == null || Arrays.asList(limeProject.haxelibs).stream()
+				.noneMatch(haxelib -> "utest".equals(haxelib.name))) {
+			builder.append("<haxelib name=\"utest\"/>\n");
 		}
 
 		// add everything else
