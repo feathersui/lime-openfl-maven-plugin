@@ -32,7 +32,7 @@ The following sample Maven _pom.xml_ demonstrates how to build an existing proje
   <groupId>com.example</groupId>
   <artifactId>example-lime-project</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>lime-openfl</packaging>
 
   <build>
     <plugins>
@@ -40,60 +40,25 @@ The following sample Maven _pom.xml_ demonstrates how to build an existing proje
         <groupId>com.feathersui.maven.plugins</groupId>
         <artifactId>lime-openfl-maven-plugin</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>build</goal>
-            </goals>
-          </execution>
-        </executions>
+        <extensions>true</extensions>
       </plugin>
     </plugins>
   </build>
 </project>
 ```
+
+Run `mvn compile` in a terminal to build your project.
 
 ## Generate a Lime _project.xml_ file
 
-If you don't have an existing Lime _project.xml_ file, or if you prefer to manage all build configuration in the Maven _pom.xml_ file, you can add the `generate-project-xml` goal too.
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
-  <groupId>com.example</groupId>
-  <artifactId>example-lime-project</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.feathersui.maven.plugins</groupId>
-        <artifactId>lime-openfl-maven-plugin</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>generate-project-xml</goal>
-              <goal>build</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-</project>
-```
-
-To customize the generated _project.xml_ file, add a [`<limeProject>` parameter](https://feathersui.github.io/lime-openfl-maven-plugin/apidocs/com/feathersui/maven/plugin/lime_openfl/LimeProject.html) in the `configuration` section for the plugin.
+If you don't have an existing Lime _project.xml_ file, or if you prefer to manage all build configuration in the Maven _pom.xml_ file, you can add a [`<limeProject>` parameter](https://feathersui.github.io/lime-openfl-maven-plugin/apidocs/com/feathersui/maven/plugin/lime_openfl/LimeProject.html) in the `configuration` section for the plugin.
 
 ```xml
 <plugin>
   <groupId>com.feathersui.maven.plugins</groupId>
   <artifactId>lime-openfl-maven-plugin</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+  <extensions>true</extensions>
   <configuration>
     <limeProject>
       <app>
@@ -113,14 +78,6 @@ To customize the generated _project.xml_ file, add a [`<limeProject>` parameter]
       </icons>
     </limeProject>
   </configuration>
-  <executions>
-    <execution>
-      <goals>
-        <goal>generate-project-xml</goal>
-        <goal>build</goal>
-      </goals>
-    </execution>
-  </executions>
 </plugin>
 ```
 
@@ -138,7 +95,7 @@ For code intelligence to work properly, you must build the project at least once
 
 ## Build the plugin from source
 
-Run the following command to build and install the plugin.
+Run the following command in this directory to build and install the lime-openfl-maven-plugin in your local repository.
 
 ```sh
 mvn clean install
