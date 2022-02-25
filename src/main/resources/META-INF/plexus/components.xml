@@ -30,15 +30,30 @@ limitations under the License.
               <generate-resources>
                 com.feathersui.maven.plugins:lime-openfl-maven-plugin:generate-project-xml
               </generate-resources>
+              <process-resources>
+                org.apache.maven.plugins:maven-resources-plugin:resources
+              </process-resources>
               <compile>
                 com.feathersui.maven.plugins:lime-openfl-maven-plugin:build
               </compile>
+              <process-test-resources>
+                org.apache.maven.plugins:maven-resources-plugin:testResources
+              </process-test-resources>
               <test-compile>
                 com.feathersui.maven.plugins:lime-openfl-maven-plugin:test-build
               </test-compile>
               <test>
                 com.feathersui.maven.plugins:lime-openfl-maven-plugin:test
               </test>
+              <!-- <package>
+                org.apache.maven.plugins:maven-jar-plugin:jar
+              </package>
+              <install>
+                org.apache.maven.plugins:maven-install-plugin:install
+              </install>
+              <deploy>
+                org.apache.maven.plugins:maven-deploy-plugin:deploy
+              </deploy> -->
             </phases>
           </lifecycle>
         </lifecycles>
