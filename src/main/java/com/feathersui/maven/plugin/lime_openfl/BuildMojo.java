@@ -19,6 +19,8 @@ package com.feathersui.maven.plugin.lime_openfl;
 import java.io.File;
 import java.io.OutputStreamWriter;
 
+import com.feathersui.maven.plugin.utils.LogOutputStream;
+
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -91,8 +93,10 @@ public class BuildMojo extends BaseBuildMojo {
 			}
 		}
 
-		WriterStreamConsumer systemOut = new WriterStreamConsumer(new OutputStreamWriter(System.out));
-		WriterStreamConsumer systemErr = new WriterStreamConsumer(new OutputStreamWriter(System.err));
+		WriterStreamConsumer systemOut = new WriterStreamConsumer(
+				new OutputStreamWriter(new LogOutputStream(getLog(), false)));
+		WriterStreamConsumer systemErr = new WriterStreamConsumer(
+				new OutputStreamWriter(new LogOutputStream(getLog(), true)));
 
 		int exitCode = CommandLineUtils.executeCommandLine(commandLine, systemOut, systemErr);
 		if (exitCode == 0) {

@@ -27,18 +27,15 @@ import java.io.OutputStreamWriter;
 import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.zip.GZIPOutputStream;
 
-import com.sun.net.httpserver.HttpServer;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-
+import com.feathersui.maven.plugin.utils.LogOutputStream;
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.JSHandle;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-import com.microsoft.playwright.BrowserType.LaunchOptions;
+import com.sun.net.httpserver.HttpExchange;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpServer;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -170,10 +167,21 @@ public class TestMojo extends BaseMojo {
 				Browser browser = playwright.chromium().launch();
 				Page page = browser.newPage();
 				page.onConsoleMessage((t) -> {
-					if ("error".equals(t.type())) {
-						System.err.println(t.text());
-					} else {
-						System.out.println(t.text());
+					switch (t.type()) {
+						case "error":
+							getLog().error(t.text());
+							break;
+						case "info":
+							getLog().info(t.text());
+							break;
+						case "warning":
+							getLog().warn(t.text());
+							break;
+						case "debug":
+							getLog().debug(t.text());
+							break;
+						default:
+							getLog().info(t.text());
 					}
 				});
 				page.navigate("http://localhost:3000/");
@@ -203,8 +211,10 @@ public class TestMojo extends BaseMojo {
 			commandLine.createArg().setValue("--app-path=" + testBuildDirectory.getAbsolutePath());
 			commandLine.createArg().setValue("--app-file=TestsMain");
 
-			WriterStreamConsumer systemOut = new WriterStreamConsumer(new OutputStreamWriter(System.out));
-			WriterStreamConsumer systemErr = new WriterStreamConsumer(new OutputStreamWriter(System.err));
+			WriterStreamConsumer systemOut = new WriterStreamConsumer(
+					new OutputStreamWriter(new LogOutputStream(getLog(), false)));
+			WriterStreamConsumer systemErr = new WriterStreamConsumer(
+					new OutputStreamWriter(new LogOutputStream(getLog(), true)));
 
 			int exitCode = 1;
 			try {

@@ -27,6 +27,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import com.feathersui.maven.plugin.utils.LogOutputStream;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -140,8 +142,10 @@ public class BuildTestsMojo extends BaseBuildMojo {
 			}
 		}
 
-		WriterStreamConsumer systemOut = new WriterStreamConsumer(new OutputStreamWriter(System.out));
-		WriterStreamConsumer systemErr = new WriterStreamConsumer(new OutputStreamWriter(System.err));
+		WriterStreamConsumer systemOut = new WriterStreamConsumer(
+				new OutputStreamWriter(new LogOutputStream(getLog(), false)));
+		WriterStreamConsumer systemErr = new WriterStreamConsumer(
+				new OutputStreamWriter(new LogOutputStream(getLog(), true)));
 
 		int exitCode = CommandLineUtils.executeCommandLine(commandLine, systemOut, systemErr);
 		if (exitCode != 0) {
