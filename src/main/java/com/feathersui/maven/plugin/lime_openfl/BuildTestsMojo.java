@@ -68,6 +68,9 @@ public class BuildTestsMojo extends BaseBuildMojo {
 	@Parameter(defaultValue = "${project.build.directory}/utest/generated-sources", required = true, readonly = true)
 	private File testGeneratedSrcDirectory;
 
+	@Parameter(defaultValue = "${project.build.directory}/utest/html5/bin/index.html", required = true, readonly = true)
+	private File testIndexFile;
+
 	@Parameter(property = "maven.test.skip", readonly = true)
 	private boolean skip;
 
@@ -144,6 +147,10 @@ public class BuildTestsMojo extends BaseBuildMojo {
 		if (exitCode != 0) {
 			throw new MojoFailureException("Lime test build failure. Process exited with code: " + exitCode);
 		}
+
+		if ("html5".equals(target)) {
+			generateTestIndex();
+		}
 	}
 
 	protected boolean generateTestSources() throws MojoExecutionException, IOException {
@@ -201,7 +208,16 @@ public class BuildTestsMojo extends BaseBuildMojo {
 					.append(qualifiedName)
 					.append("());\n");
 		}
-		mainBuilder.append("    Report.create(runner);\n")
+		mainBuilder
+				.append("    #if html5\n")
+				.append("    new utest.ui.text.PrintReport(runner);\n")
+				.append("    var aggregator = new utest.ui.common.ResultAggregator(runner, true);\n")
+				.append("    aggregator.onComplete.add(function(result:utest.ui.common.PackageResult):Void {\n")
+				.append("  	  Reflect.setField(js.Lib.global, \"utestResult\", result);\n")
+				.append("    });\n")
+				.append("    #else\n")
+				.append("    Report.create(runner);\n")
+				.append("    #end\n")
 				.append("    runner.run();\n")
 				.append("  }\n")
 				.append("}\n");
@@ -213,5 +229,28 @@ public class BuildTestsMojo extends BaseBuildMojo {
 		}
 
 		return true;
+	}
+
+	private void generateTestIndex() throws MojoExecutionException {
+		StringBuilder indexBuilder = new StringBuilder()
+				.append("<!DOCTYPE html>\n")
+				.append("<html lang=\"en\">\n")
+				.append("  <head>\n")
+				.append("    <meta charset=\"utf-8\">\n")
+				.append("    <title>lime-openfl-maven-plugin Test Runner</title>\n")
+				.append("    <script type=\"text/javascript\" src=\"./TestsMain.js\"></script>\n")
+				.append("  </head>\n")
+				.append("  <body>\n")
+				.append("    <noscript>Please enable JavaScript in your web browser to run tests.</noscript>\n")
+				.append("    <script type=\"text/javascript\">\n")
+				.append("      lime.$scripts[\"TestsMain\"]();\n")
+				.append("    </script>\n")
+				.append("  </body>\n")
+				.append("</html>");
+		try {
+			FileUtils.write(testIndexFile, indexBuilder.toString(), Charset.forName("utf-8"));
+		} catch (Exception e) {
+			throw new MojoExecutionException("Fatal error generating Lime tests project file", e);
+		}
 	}
 }
