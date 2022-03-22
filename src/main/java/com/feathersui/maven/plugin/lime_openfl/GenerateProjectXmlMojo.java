@@ -61,7 +61,7 @@ import org.apache.maven.project.MavenProject;
  *     <plugin>
  *       <groupId>com.feathersui.maven.plugins</groupId>
  *       <artifactId>lime-openfl-maven-plugin</artifactId>
- *       <version>1.0.0-SNAPSHOT</version>
+ *       <version>1.0.0</version>
  *       <extensions>true</extensions>
  *       <configuration>
  *         <limeProject>
@@ -94,7 +94,7 @@ public class GenerateProjectXmlMojo extends AbstractMojo {
 	 *     <plugin>
 	 *       <groupId>com.feathersui.maven.plugins</groupId>
 	 *       <artifactId>lime-openfl-maven-plugin</artifactId>
-	 *       <version>1.0.0-SNAPSHOT</version>
+	 *       <version>1.0.0</version>
 	 *       <extensions>true</extensions>
 	 *       <configuration>
 	 *         <limeProject>

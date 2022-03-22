@@ -41,7 +41,7 @@ The following sample Maven _pom.xml_ demonstrates how to build an existing proje
       <plugin>
         <groupId>com.feathersui.maven.plugins</groupId>
         <artifactId>lime-openfl-maven-plugin</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.0</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>
@@ -59,7 +59,7 @@ If you don't have an existing Lime _project.xml_ file, or if you prefer to manag
 <plugin>
   <groupId>com.feathersui.maven.plugins</groupId>
   <artifactId>lime-openfl-maven-plugin</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <extensions>true</extensions>
   <configuration>
     <limeProject>
