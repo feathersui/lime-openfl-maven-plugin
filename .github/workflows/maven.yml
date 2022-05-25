@@ -33,7 +33,7 @@ jobs:
           path: target/site/apidocs/
           if-no-files-found: error
       - name: Upload Site
-        if: ${{ github.event_name != 'pull_request' && github.ref_name == 'master' }}
+        if: ${{ github.repository_owner == 'feathersui' && github.event_name != 'pull_request' && github.ref_name == 'master' }}
         uses: JamesIves/github-pages-deploy-action@v4.2.3
         with:
           branch: gh-pages
