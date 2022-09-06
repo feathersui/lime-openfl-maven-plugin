@@ -14,10 +14,6 @@ Performs the following actions:
 
 - The [Haxe](https://haxe.org/download/) compiler must be installed.
 
-## Installation
-
-Currently, the plugin must be built and installed manually. See below.
-
 ## Usage
 
 The _lime-openfl-maven-plugin_ includes a couple of goals for building Lime projects.
